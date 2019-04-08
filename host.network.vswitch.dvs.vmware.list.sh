@@ -11,8 +11,8 @@ function sshCmd {
 
 if [[ -n "${ID}" ]]; then
 	read -r -d '' COMMANDS <<-EOF
-		#esxcli --formatter=keyvalue network vswitch dvs vmware list
-		esxcli network vswitch dvs vmware list
+		esxcli --formatter=keyvalue network vswitch dvs vmware list
+		#esxcli network vswitch dvs vmware list
 	EOF
 	sshCmd "${COMMANDS}"
 else
