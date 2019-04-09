@@ -8,7 +8,7 @@ fi
 source ${WORKDIR}/drv.core
 
 ## input driver
-INPUT=$(${WORKDIR}/drv.netdbg.mac-learning.get.sh "${1}")
+INPUT=$(${WORKDIR}/drv.vswitch.mac-learning.get.sh "${1}")
 
 ## build record structure
 read -r -d '' INPUTSPEC <<-CONFIG

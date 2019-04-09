@@ -11,7 +11,7 @@ HOST=${1}
 
 function buildNode {
 	local KEY=${1}
-	NODE=$(${WORKDIR}/drv.netdbg.mac-learning.port.get.sh "${HOST}" fabric "${KEY}")
+	NODE=$(${WORKDIR}/drv.vswitch.mac-learning.port.disable.sh "${HOST}" fabric "${KEY}")
 	printf "%s\n" "${NODE}"
 }
 
