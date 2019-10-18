@@ -6,7 +6,7 @@ source ${WORKDIR}/drv.core
 #source ${WORKDIR}/drv.nsx.client
 
 ## input driver
-NODES=(25 26 27 28)
+NODES=(28 29 30 31)
 HOST=${1}
 
 function buildNode {

@@ -1,4 +1,9 @@
+## list all dvports for portgroup
+-- /?
+
 ## notes for configuration mac-learning on esx 6.7
+need to build an Rest API SHIM for Web Services SDK
+-- basic docker container re-exposing constructs
 
 #### list switch ports
 esxcli network vswitch dvs vmware list 
