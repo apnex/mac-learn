@@ -1,0 +1,65 @@
+[
+	{
+		"dvport": 9,
+		"mac_learning": "True",
+		"unknown_unicast_flooding": "True",
+		"mac_limit": 4094,
+		"mac_limit_policy": "ALLOW"
+	},
+	{
+		"dvport": 10,
+		"mac_learning": "True",
+		"unknown_unicast_flooding": "True",
+		"mac_limit": 4094,
+		"mac_limit_policy": "ALLOW"
+	},
+	{
+		"dvport": 17,
+		"mac_learning": "False",
+		"unknown_unicast_flooding": "True",
+		"mac_limit": 4094,
+		"mac_limit_policy": "ALLOW"
+	},
+	{
+		"dvport": 25,
+		"mac_learning": "True",
+		"unknown_unicast_flooding": "True",
+		"mac_limit": 4094,
+		"mac_limit_policy": "ALLOW"
+	},
+	{
+		"dvport": 26,
+		"mac_learning": "True",
+		"unknown_unicast_flooding": "True",
+		"mac_limit": 4094,
+		"mac_limit_policy": "ALLOW"
+	},
+	{
+		"dvport": 27,
+		"mac_learning": "True",
+		"unknown_unicast_flooding": "True",
+		"mac_limit": 4094,
+		"mac_limit_policy": "ALLOW"
+	},
+	{
+		"dvport": 28,
+		"mac_learning": "True",
+		"unknown_unicast_flooding": "True",
+		"mac_limit": 4094,
+		"mac_limit_policy": "ALLOW"
+	},
+	{
+		"dvport": 74,
+		"mac_learning": "True",
+		"unknown_unicast_flooding": "True",
+		"mac_limit": 4094,
+		"mac_limit_policy": "ALLOW"
+	},
+	{
+		"dvport": 75,
+		"mac_learning": "True",
+		"unknown_unicast_flooding": "True",
+		"mac_limit": 4094,
+		"mac_limit_policy": "ALLOW"
+	}
+]

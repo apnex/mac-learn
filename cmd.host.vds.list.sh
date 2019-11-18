@@ -8,18 +8,15 @@ fi
 source ${WORKDIR}/drv.core
 
 ## input driver
-INPUT=$(${WORKDIR}/drv.host.switch.list.sh "${1}")
+INPUT=$(${WORKDIR}/drv.host.vds.list.sh "${1}")
 
 ## build record structure
 read -r -d '' INPUTSPEC <<-CONFIG
-	. | map({
-		"name": .name,
-		"used_ports": .used_ports,
-		"configured_ports": .configured_ports,
-		"mtu": .mtu,
-		"cdp_status": .cdp_status,
-		"uplinks": .uplinks,
-		"portgroups": .portgroups
+	.[].DVPort | map({
+		"PortID": .PortID,
+		"InUse": .InUse,
+		"DVPortgroupID": .DVPortgroupID,
+		"Client": .Client[0]
 	})
 CONFIG
 PAYLOAD=$(echo "$INPUT" | jq -r "$INPUTSPEC")
