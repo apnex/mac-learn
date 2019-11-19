@@ -119,5 +119,5 @@ if [[ -n "${IPADDR}" ]]; then
 	makeSwitch "${RESPONSE}"
 	#makeSwitch "$(cat vds.data.txt)"
 else
-	printf "[$(corange "ERROR")]: command usage: $(cgreen "host.vds.get") $(ccyan "<ip-address>")\n" 1>&2
+	printf "[$(corange "ERROR")]: command usage: $(cgreen "host.vds.list") $(ccyan "<ip-address>")\n" 1>&2
 fi

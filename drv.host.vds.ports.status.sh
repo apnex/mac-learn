@@ -7,16 +7,18 @@ source ${WORKDIR}/drv.core
 ID=$1
 
 ## input driver
-INPUT=$(${WORKDIR}/drv.host.vds.list.sh "${ID}")
-read -r -d '' INPUTSPEC <<-CONFIG
-	.[].DVPort | map({
-		"PortID": .PortID,
-		"InUse": .InUse,
-		"DVPortgroupID": .DVPortgroupID,
-		"Client": .Client[0]
-	})
-CONFIG
-NODES=$(echo "$INPUT" | jq -r "$INPUTSPEC")
+if [[ -n "${ID}" ]]; then
+	INPUT=$(${WORKDIR}/drv.host.vds.list.sh "${ID}")
+	read -r -d '' INPUTSPEC <<-CONFIG
+		.[].DVPort | map({
+			"PortID": .PortID,
+			"InUse": .InUse,
+			"DVPortgroupID": .DVPortgroupID,
+			"Client": .Client[0]
+		})
+	CONFIG
+	NODES=$(echo "$INPUT" | jq -r "$INPUTSPEC")
+fi
 
 # item status
 function getStatus {
@@ -67,9 +69,14 @@ function buildNode {
 	printf "%s\n" "${FINALNODE}"
 }
 
-FINAL="[]"
-for KEY in $(echo ${NODES} | jq -r '.[] | .PortID'); do
-	MYNODE=$(buildNode "${KEY}")
-	FINAL="$(echo "${FINAL}[${MYNODE}]" | jq -s '. | add')"
-done
-printf "${FINAL}" | jq --tab .
+if [[ -n "${ID}" ]]; then
+	FINAL="[]"
+	for KEY in $(echo ${NODES} | jq -r '.[] | .PortID'); do
+		MYNODE=$(buildNode "${KEY}")
+		FINAL="$(echo "${FINAL}[${MYNODE}]" | jq -s '. | add')"
+	done
+	printf "${FINAL}" | jq --tab .
+else
+	printf "[$(corange "ERROR")]: command usage: $(cgreen "host.vds.ports.status") $(ccyan "<ip-address>")\n" 1>&2
+fi
+
