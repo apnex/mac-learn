@@ -8,7 +8,7 @@ DVPORT="${3}"
 
 function sshCmd {
 	local COMMANDS="${1}"
-	sshpass -p 'VMware1!' ssh root@"${ID}" -o LogLevel=QUIET -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -t "${COMMANDS}"
+	sshpass -p 'ObiWan1!' ssh root@"${ID}" -o LogLevel=QUIET -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -t "${COMMANDS}"
 }
 
 function makeBody {
