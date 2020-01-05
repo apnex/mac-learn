@@ -5,10 +5,11 @@ source drv.core
 ID="${1}"
 VDSNAME="${2}"
 DVPORT="${3}"
+ESXPASS=$(jq -r '.esxpass' <parameters)
 
 function sshCmd {
 	local COMMANDS="${1}"
-	sshpass -p 'ObiWan1!' ssh root@"${ID}" -o LogLevel=QUIET -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -t "${COMMANDS}"
+	sshpass -p ${ESXPASS} ssh root@"${ID}" -o LogLevel=QUIET -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -t "${COMMANDS}"
 }
 
 function makeBody {
@@ -37,5 +38,5 @@ if [[ -n "${ID}" && "${VDSNAME}" && "${DVPORT}" ]]; then
 	)
 	makeBody "${RESPONSE}"
 else
-	printf "[$(corange "ERROR")]: command usage: $(cgreen "host.switch.list") $(ccyan "<ip-address> <vds-name> <dvport>")\n" 1>&2
+	printf "[$(corange "ERROR")]: command usage: $(cgreen "host.vds.maclearn.list") $(ccyan "<ip-address> <vds-name> <dvport>")\n" 1>&2
 fi

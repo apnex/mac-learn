@@ -25,7 +25,7 @@ function getStatus {
 	local NODEID=${1}
 	if [[ -n "${NODEID}" ]]; then
 		#printf "[$(cgreen "INFO")]: vsp [$(cgreen "status")] vds.port [$(cgreen "$NODEID")]... \n" 1>&2
-		./drv.host.vds.maclearn.port.get.sh ${ID} fabric "${NODEID}"
+		${WORKDIR}/drv.host.vds.maclearn.port.get.sh ${ID} fabric "${NODEID}"
 	fi
 }
 
