@@ -2,10 +2,11 @@
 source drv.core
 
 IPADDR="${1}"
+ESXPASS=$(jq -r '.esxpass' <parameters)
 
 function sshCmd {
 	local COMMANDS="${1}"
-	sshpass -p 'VMware1!' ssh root@"${IPADDR}" -o LogLevel=QUIET -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -t "${COMMANDS}"
+	sshpass -p ${ESXPASS} ssh root@"${IPADDR}" -o LogLevel=QUIET -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -t "${COMMANDS}"
 }
 
 function parseToken {

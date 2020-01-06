@@ -5,10 +5,11 @@ source drv.core
 ID="${1}"
 VDSNAME="${2}"
 DVPORT="${3}"
+ESXPASS=$(jq -r '.esxpass' <parameters)
 
 function sshCmd {
 	local COMMANDS="${1}"
-	sshpass -p 'VMware1!' ssh root@"${ID}" -o LogLevel=QUIET -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -t "${COMMANDS}"
+	sshpass -p ${ESXPASS} ssh root@"${ID}" -o LogLevel=QUIET -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -t "${COMMANDS}"
 }
 
 #structure[0].VDS.DVPort.structure[2].DVPort.Client.string[0].string=boot.lab.eth1
