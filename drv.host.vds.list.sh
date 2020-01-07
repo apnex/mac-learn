@@ -1,5 +1,5 @@
 #!/bin/bash
-source drv.core
+source mod.core
 
 IPADDR="${1}"
 ESXPASS=$(jq -r '.esxpass' <parameters)

@@ -1,12 +1,13 @@
 #!/bin/bash
-source drv.core
+source mod.core
 
 ID="${1}"
 SWITCH="${2}"
+ESXPASS=$(jq -r '.esxpass' <parameters)
 
 function sshCmd {
 	local COMMANDS="${1}"
-	sshpass -p 'VMware1!' ssh root@"${ID}" -o LogLevel=QUIET -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -t "${COMMANDS}"
+	sshpass -p ${ESXPASS} ssh root@"${ID}" -o LogLevel=QUIET -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -t "${COMMANDS}"
 }
 
 if [[ -n "${ID}" && "${SWITCH}" ]]; then

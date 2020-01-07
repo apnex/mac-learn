@@ -1,5 +1,5 @@
 #!/bin/bash
-source drv.core
+source mod.core
 
 # inputs
 ID="${1}"
@@ -31,7 +31,7 @@ function makeBody {
 if [[ -n "${ID}" && "${VDSNAME}" && "${DVPORT}" ]]; then
 	RESPONSE=$(
 		read -r -d '' COMMANDS <<-EOF
-			netdbg vswitch mac-learning port set --dvs-alias "${VDSNAME}" --dvport "${DVPORT}" --enable
+			netdbg vswitch mac-learning port set --dvs-alias "${VDSNAME}" --dvport "${DVPORT}" --disable
 			printf "%s\n" "dvport: ${DVPORT}"
 			netdbg vswitch mac-learning port get --dvs-alias "${VDSNAME}" --dvport "${DVPORT}"
 		EOF

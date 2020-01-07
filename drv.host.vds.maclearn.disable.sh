@@ -2,7 +2,7 @@
 if [[ $0 =~ ^(.*)/[^/]+$ ]]; then
 	WORKDIR=${BASH_REMATCH[1]}
 fi
-source ${WORKDIR}/drv.core
+source ${WORKDIR}/mod.core
 
 # inputs
 HOST=$1
@@ -10,7 +10,7 @@ PORTGROUP=$2
 
 function buildNode {
 	local KEY=${1}
-	NODE=$(${WORKDIR}/drv.vswitch.mac-learning.port.disable.sh "${HOST}" fabric "${KEY}")
+	NODE=$(${WORKDIR}/drv.host.vds.maclearn.port.disable.sh "${HOST}" fabric "${KEY}")
 	printf "%s\n" "${NODE}"
 }
 
@@ -18,7 +18,7 @@ if [[ -n "${HOST}" && -n "${PORTGROUP}" ]]; then
 	read -r -d '' JQSPEC <<-CONFIG # collapse into single line
 		map(select(.DVPortgroupID | contains ("${PORTGROUP}")))
 	CONFIG
-	INPUT=$(./drv.host.vds.ports.status.sh "${HOST}")
+	INPUT=$(${WORKDIR}/drv.host.vds.ports.status.sh "${HOST}")
 	NODES=($(echo ${INPUT} | jq -r "$JQSPEC" | jq -r '.[] | .PortID'))
 
 	FINAL="[]"

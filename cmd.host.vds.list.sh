@@ -5,7 +5,7 @@ if [[ $0 =~ ^(.*)/([^/]+)$ ]]; then ## offload to drv.core?
 		TYPE=${BASH_REMATCH[1]}
 	fi
 fi
-source ${WORKDIR}/drv.core
+source ${WORKDIR}/mod.core
 
 ## input driver
 INPUT=$(${WORKDIR}/drv.host.vds.list.sh "${1}")
